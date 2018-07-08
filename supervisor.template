@@ -1,0 +1,5 @@
+{variables, [
+  {name, "supname"},
+  {dir, "."}
+]}.
+{template, "supervisor.erl", "{{dir}}/{{name}}_sup.erl"}.

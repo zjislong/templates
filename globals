@@ -1,0 +1,5 @@
+{variables, [
+  {copyright_year, "2018"},
+  {author_name, "ZhengJia"},
+  {author_email, "zj952067409@163.com"}
+]}.

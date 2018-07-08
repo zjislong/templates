@@ -1,0 +1,6 @@
+{variables, [
+  {name, "escriptname"}
+]}.
+{dir, "bin"}.
+{template, "escript", "bin/{{name}}"}.
+{chmod, 8#00770, "bin/{{name}}"}.

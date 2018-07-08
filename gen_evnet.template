@@ -1,0 +1,5 @@
+{variables, [
+  {name, "mylogger"},
+  {dir, "."}
+]}.
+{template, "gen_event.erl", "{{dir}}/{{name}}.erl"}.

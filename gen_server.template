@@ -1,0 +1,5 @@
+{variables, [
+  {name, "myserver"},
+  {dir, "."}
+]}.
+{template, "gen_server.erl", "{{dir}}/{{name}}_srv.erl"}.
