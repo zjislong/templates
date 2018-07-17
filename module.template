@@ -1,0 +1,5 @@
+{variables, [
+  {name, "my_lib"},
+  {dir, "."}
+]}.
+{template, "module.erl", "{{dir}}/{{name}}.erl"}.

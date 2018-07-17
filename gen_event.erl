@@ -33,22 +33,22 @@
 %% @private
 %% @doc initializes gen_event
 init([]) ->
-  {ok, []}.
+    {ok, []}.
 
 -spec handle_event(event(), state()) ->
-  {ok, state()} | {ok, state(), hibernate} |
-  {swap_handler, arg(), state(), handler(), arg()} | remove_handler.
+    {ok, state()} | {ok, state(), hibernate} |
+    {swap_handler, arg(), state(), handler(), arg()} | remove_handler.
 %% @private
 %% @doc handle/log event
 handle_event(_Message, State) ->
-  {ok, State}.
+    {ok, State}.
 
 -type terminate_args() :: term() | {stop, term()} | stop | remove_handler |
-  {error, {'EXIT', term()}} | {error, term()}.
+    {error, {'EXIT', term()}} | {error, term()}.
 -spec terminate(terminate_args(), state()) -> ok.
 %% terminates gen_event
 terminate(_Args, _State) ->
-  ok.
+    ok.
 
 %%%.
 %%%'   PRIVATE FUNCTIONS
