@@ -21,7 +21,12 @@ start_link() ->
 %% Supervisor callbacks
 %%====================================================================
 
-%% Child :: #{id => Id, start => {M, F, A}}
+%% Child :: #{id := term(),
+%%      start := {M :: module(), F :: atom(), A :: [term()] | undefined},
+%%      restart => permanent | transient | temporary,
+%%      shutdown => brutal_kill | timeout(),
+%%      type => worker | supervisor,
+%%      modules => [module()] | dynamic}
 %% Optional keys are restart, shutdown, type, modules.
 %% Before OTP 18 tuples must be used to specify a child. e.g.
 %% Child :: {Id,StartFunc,Restart,Shutdown,Type,Modules}
