@@ -1,4 +1,3 @@
-%%%'   HEADER
 %% @author    {{author_name}} <{{author_email}}>
 %% @copyright {{copyright_year}} {{author_name}}
 %% @doc       EUnit test suite module {{name}}.
@@ -12,11 +11,7 @@
 -include_lib("eunit/include/eunit.hrl").
 
 -define(MODNAME, {{name}}).
-%%%.
-%%%' TEST GENERATOR
-%% @spec {{name}}_test_() -> List
-%% where
-%%       List = [term()]
+
 {{name}}_test_() ->
   %% add your asserts in the returned list, e.g.:
   %% [
@@ -28,6 +23,3 @@
   %%   ?assertThrow({not_found, _}, ?MODNAME:func(unknown_object))
   %% ]
   [].
-%%%.
-%%% vim: set filetype=erlang tabstop=2 foldmarker=%%%',%%%. foldmethod=marker:
-
