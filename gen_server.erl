@@ -1,4 +1,3 @@
-%%%'   HEADER
 %%% @author {{author_name}} <{{author_email}}>
 %%% @copyright {{copyright_year}} {{author_name}}
 %%% @doc gen_server callback module implementation:
@@ -14,15 +13,13 @@
 -export([code_change/3]).
 -export([stop/0, terminate/2]).
 
-% TODO: If unnamed server, remove definition below.
 -define(SERVER, ?MODULE).
-%%%.
-%%%'   TYPE DEFINITIONS
+
 -type start_link_error() :: {already_started, pid()} | term().
 
-%%%.
-%%%'   PUBLIC API
-
+%%====================================================================
+%% API functions
+%%====================================================================
 %% @doc starts gen_server implementation and caller links to the process too.
 -spec start_link() -> {ok, pid()} | ignore | {error, start_link_error()}.
 start_link() ->
@@ -35,10 +32,9 @@ start_link() ->
 stop() ->
     gen_server:cast(?SERVER, stop).
 
-% TODO: add more public API here...
-
-%%%.
-%%%'   CALLBACKS
+%%====================================================================
+%% Gen_server callbacks
+%%====================================================================
 %% @callback gen_server
 init(State) ->
     {ok, State}.
@@ -71,7 +67,7 @@ handle_info(Info, State) ->
         do_handle_info(Info, State)
     catch
         C:R:Stacktrace ->
-          io:format("~p handle_info:~p fail:{~p,~p,~p}", [?SERVER,Info,C,R,Stacktrace]),
+          lager:error("~p handle_info:~p fail:{~p,~p,~p}", [?SERVER,Info,C,R,Stacktrace]),
           {noreply, State}
     end.
 
@@ -89,9 +85,10 @@ terminate({shutdown, _Reason}, _State) ->
 terminate(_Reason, _State) ->
     ok.
 
-%%%.
-%%%'   PRIVATE FUNCTIONS
--spec do_handle_call(Req::term(), From::{pid(),Tag}, State::term()) ->
+%%====================================================================
+%% Internal functions
+%%====================================================================
+-spec do_handle_call(Req::term(), From::pid(), State::term()) ->
      {reply,Reply::term(),NewState::term()} 
     | {reply,Reply::term(),NewState::term(),Timeout::pos_integer() | infinity | hibernate | {continue,Continue::term()}}
     | {noreply,NewState::term()} 
@@ -102,17 +99,14 @@ do_handle_call(_Req, _From, State) ->
 
 -spec do_handle_cast(Req::term(), State::term()) ->
      {noreply,NewState::term()} 
-    | {noreply,NewState::term(),Timeout::pos_integer() | infinity | hibernate | {continue,Continue::term()}
-    | {stop,Reason::normal | term(),NewState}.
+    | {noreply,NewState::term(),Timeout::pos_integer() | infinity | hibernate | {continue,Continue::term()}}
+    | {stop,Reason::normal | term(),NewState::term()}.
 do_handle_cast(_Req, State) ->
     {noreply, State}.
 
 -spec do_handle_info(Info::timeout | term(), State::term()) ->
      {noreply,NewState::term()} 
     | {noreply,NewState::term(),Timeout::pos_integer() | infinity | hibernate | {continue,Continue::term()}}
-    | {stop,Reason::normal | term(),NewState}.
+    | {stop,Reason::normal | term(),NewState::term()}.
 do_handle_info(_Info, State) ->
     {noreply, State}.
-
-%%%.
-%%% vim: set filetype=erlang tabstop=2 foldmarker=%%%',%%%. foldmethod=marker:
