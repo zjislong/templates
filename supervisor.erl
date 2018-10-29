@@ -1,4 +1,3 @@
-%%%'   HEADER
 %%% @author {{author_name}} <{{author_email}}> 
 %%% @since {{date}}
 %%% @copyright {{copyright_year}} {{author_name}}
