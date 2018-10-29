@@ -1,4 +1,3 @@
-%%%'   HEADER
 %%% @author {{author_name}} <{{author_email}}>
 %%% @copyright {{copyright_year}} {{author_name}}
 %%% @doc gen_event that {{description}}
@@ -10,24 +9,19 @@
 
 -export([init/1, handle_event/2, terminate/2]).
 
--ifdef(TEST).
--compile(export_all).
--endif.
-%%%.
-%%%'   TYPE DEFINITIONS
-%% TODO: Add type definitions (need to export them if they should be public).
 -type arg()     :: term().
 -type event()   :: term().
 -type state()   :: term().
 -type handler() :: module() | {module(), id()}.
 -type id()      :: term().
 
-%%%.
-%%%'   PUBLIC API
-%% TODO: Add public API methods here...
+%%====================================================================
+%% API functions
+%%====================================================================
 
-%%%.
-%%%'   CALLBACKS
+%%====================================================================
+%% Gen_event callbacks
+%%====================================================================
 
 -spec init([arg()]) -> {ok, [arg()]}.
 %% @private
@@ -50,9 +44,6 @@ handle_event(_Message, State) ->
 terminate(_Args, _State) ->
     ok.
 
-%%%.
-%%%'   PRIVATE FUNCTIONS
-%% TODO: Add private functions here...
-
-%%%.
-%%% vim: set filetype=erlang tabstop=2 foldmarker=%%%',%%%. foldmethod=marker:
+%%====================================================================
+%% Internal functions
+%%====================================================================
